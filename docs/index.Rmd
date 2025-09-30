@@ -117,15 +117,15 @@ You'll want to iterate through Steps 1-5 until you have a solid concept of your 
 
 ### Activity
 
-Work with your partner or team to examine the dataset of immigration tweets. Begin by agreeing on a variable of interest you will examine in addition to valence (i.e., positive or negative).
+1. Work with your partner or team to examine the dataset of immigration tweets. Begin by agreeing on a variable of interest you will examine in addition to valence (i.e., positive or negative).
 
-Have a brief discussion about the coding rules you'll use for valence and your second variable of interest.
+2. Have a brief discussion about the coding rules you'll use for valence and your second variable of interest.
 
-Using the tweet_data_coded.csv file, work independently to code the 21 observations for your two variables: valence and your other variable of interest.
+3. Using the tweet_data_coded.csv file, work independently to code the 21 observations for your two variables: valence and your other variable of interest.
 
-Calculate your inter-coder reliability (follow Professor Freelon’s instructions about how to format the .csv file!). 
+4. Calculate your inter-coder reliability (follow Professor Freelon’s instructions about how to format the .csv file!). 
 
-Discuss: What factors help explain how high or low your inter-coder reliability is? What worked and what didn’t, and why? 
+5. Discuss: What factors help explain how high or low your inter-coder reliability is? What worked and what didn’t, and why? 
 
 
 
