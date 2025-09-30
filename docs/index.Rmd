@@ -1,0 +1,131 @@
+---
+title: "Quantitative Manual Content Analysis"
+author: "Amber Boydstun & Cory Struthers"
+date: "Fall 2025"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    df_print: paged
+  pdf_document:
+    toc: true
+    toc_depth: 3
+  word_document:
+    toc: true
+    toc_depth: 3
+subtitle: Introduction to Text as Data
+    
+--- 
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = "~/Dropbox/text-as-data-JUST-CORY-AND-AMBER/modules_2024/data/")
+```
+
+### Introduction
+
+Manual content analysis is the gold standard for understanding---and validating---all computational approaches to text analysis.
+
+### Lab objectives
+
+* Stop and think about your measurement goals!
+* Walk through the joys and challenges of manual content analysis
+* Calculate inter-coder reliability
+* Understand the value of human reading of text
+
+
+### 1. Stop and think about your measurement goals!
+
+Before you do anything, with any text, Step 1 is to think hard about your measurement goals, namely your research question and exactly what you want to measure. Your measurement goals should guide all other decisions. This is true for manual content analysis but also for text-as-data approaches of all kinds.
+
+#### What is your research question?
+Do you want to explore some text, without strong expectations of what it holds? Do you want to test a pre-formulated hypothesis about specific patterns you expect to find in the text? Do you want to use the text to measure a key variable that you will then use alongside other metrics for a bigger project? Whatever your motivations are for picking up a body of text and analyzing it, you want to have those motivations solid---preferably in writing---before you begin. The land of text as data is a magical land, but one filled with many rabbit holes where one can easily get lost.
+
+#### What is your latent variable(s) of interest?
+Unless your goal is to explore a body of text without any expectations of what you will find, you should think conceptually about what variable(s) you want to measure. Maybe you're interested in comparing positive and negative language between different news sources, or examining whether the level of emotion expressed in presidential speeches has changed over time, or assessing how similar different high school history texts are. Whatever your research goal, it's important to think long and hard about the core thing (i.e., variable) you want to measure and the pros and cons of different approaches to measuring it.
+
+#### What population of text should you use?
+For example, if you're interested in the discussion of pets by young adults on social media in the last year, you probably don't want to look at Facebook, or even Twitter. You probably want to look at Instagram, Snapchat, and/or TikTok, and you might want to subset your population to only those posts authored by people under a certain age. However, if you're interested in comparing how different people of different ages talk about their pets on social media, you'd likely want to include all users across all these platforms (and more).
+
+#### What unit of analysis should you use?
+An often overlooked but *crucial* question is what unit of analysis you should use. In many cases, the unit of analysis is the **document**. For instance, some researchers may want to measure how many times each newspaper article or social media post references a term like "liberal", "conservative", or (better yet) "giraffe". However, in some cases the unit of analysis might be smaller or larger than the document: the analyst may want to break apart a newspaper article into paragraphs, or combine all the tweets written by a single author in one day. In our example about discussion of pets, for example, should you use treat each social media post as a unit (i.e., treat it as a separate document)? Or would it be better to break up the posts into sentences, with the sentence as the unit of analysis? Or should you expand it out, pooling all the posts by month, and treating the month as your unit of analysis, with all posts on that month treated as one big document? There are no wrong answers here. Which unit of analysis you should use depends on---you guessed it---your research question/goal and your latent variable(s) of interest.
+
+### 2. Look at your data
+
+Once you've made these important decisions, the next step for manual content analysis is to LOOK at your data, keeping your research goal and latent variable(s) of interest in mind. Let's use a sample of Twitter posts about immigration as an example. For this exercise, let's use the tweet as our unit of analysis.
+
+In order to look at our data in R, we will need the following packages. 
+
+We also need to set our working directory to the local or remote folder that hosts the data required for this course to use relative paths when loading data. Time constraints prevent us from diving deeply into differences between absolute and relative paths, but this [source](https://www.r4epi.com/file-paths.html) provides helpful background. Relative paths are considered best practice for collaborative projects, so that is what we'll set up here using `setwd()`. We will use the same line of code every time we begin a new module. Note that on Windows, we use / (forward slash) instead of \ (back slash). Then we can load the data and take a peek at it.
+
+```{r, message=FALSE}
+
+# Load packages
+require(tidyverse)
+require(dplyr)
+
+# Set working directory
+setwd("~/Dropbox/text-as-data-JUST-CORY-AND-AMBER/modules_2024/data/")
+#getwd() # view working directory
+
+# Load data
+tweet_data = read.csv("sample_immigration_tweets_2013-2017.csv")
+class(tweet_data)
+
+# Look at your data
+head(tweet_data)
+
+```
+
+
+Now we can think about a key variable we'd like to measure, and scan through the tweets to get a sense for how easy it would be to categorize each tweet according to your variable. For a real project, we'd want to take a random sample of the text and read it at this stage.
+
+### 3. Build and test a codebook
+
+With your variable in mind, you'll then want to write down the rules that will allow you (and future researchers) to categorize each text according to that variable. For example, if we want to track social media posts about pets, we'll want to establish a rule telling us whether or not someone's post about a *friend's* pet should count.
+
+### 4. Code your data independent from another coder
+
+When you've established your codebook, you'll want to have two people (coders) independently use the codebook to code the same random sample of data in order to see whether the codebook alone is thorough enough to produce consistent coding decisions.
+
+
+``` {r, results = 'hide', message = FALSE}
+
+# Subset to only 20 observations and only the text variable
+tweet_df = subset(tweet_data, select = c(text)) %>%
+  slice(100:120)
+head(tweet_df)
+
+# Add two columns for your own coding: one for valence, the other for a variable you find interesting
+tweet_data_coded = cbind(tweet_df, valence="", other_variable="")
+head(tweet_data_coded)
+
+# Output your data for manual coding (writing into your current working directory folder)
+write.csv(tweet_data_coded, "~/Dropbox/text-as-data-JUST-CORY-AND-AMBER/modules_2024/data/tweet_data_coded.csv", row.names=TRUE)
+
+```
+
+### 5. Check for inter-coder reliability
+
+Use Deen Freelon's extraordinary (and free!) online system to calculate inter-coder reliability:
+http://dfreelon.org/utils/recalfront/
+
+In general, a Cohen's Kappa and Krippendorff's Alpha scores of over 0.7 allow us to be confident in the reliability of the coding.
+
+### 6. Wash, rinse, and repeat
+
+You'll want to iterate through Steps 1-5 until you have a solid concept of your variable of interest, a strong codebook that can handle most new observations you code, and high levels of inter-coder reliability. Make sure to annotate your codebook as you go, making notes of any specific coding decisions you make. But careful! If you make a decision that is inconsistent with how you have coded things in the past, you'll need to go back and find those observations and re-code them according to your new rule. Fun, right?
+
+
+### Activity
+
+Work with your partner or team to examine the dataset of immigration tweets. Begin by agreeing on a variable of interest you will examine in addition to valence (i.e., positive or negative).
+
+Have a brief discussion about the coding rules you'll use for valence and your second variable of interest.
+
+Using the tweet_data_coded.csv file, work independently to code the 21 observations for your two variables: valence and your other variable of interest.
+
+Calculate your inter-coder reliability (follow Professor Freelon’s instructions about how to format the .csv file!). 
+
+Discuss: What factors help explain how high or low your inter-coder reliability is? What worked and what didn’t, and why? 
+
+
+
