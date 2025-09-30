@@ -1643,7 +1643,7 @@ independent from another coder</a></li>
 reliability</a></li>
 <li><a href="#wash-rinse-and-repeat" id="toc-wash-rinse-and-repeat">6.
 Wash, rinse, and repeat</a></li>
-<li><a href="#homework" id="toc-homework">Homework</a></li>
+<li><a href="#activity" id="toc-activity">Activity</a></li>
 </ul>
 </div>
 
@@ -1745,8 +1745,10 @@ begin a new module. Note that on Windows, we use / (forward slash)
 instead of  (back slash). Then we can load the data and take a peek at
 it.</p>
 <pre class="r"><code># Load packages
-require(tidyverse)
-require(dplyr)
+require(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.3.3</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.3.3</code></pre>
+<pre class="r"><code>require(dplyr)
 
 # Set working directory
 setwd(&quot;~/Dropbox/text-as-data-JUST-CORY-AND-AMBER/modules_2024/data/&quot;)
@@ -1813,43 +1815,20 @@ decision that is inconsistent with how you have coded things in the
 past, you’ll need to go back and find those observations and re-code
 them according to your new rule. Fun, right?</p>
 </div>
-<div id="homework" class="section level3">
-<h3>Homework</h3>
-<div id="discussion-questions" class="section level4">
-<h4>Discussion Questions:</h4>
-<ol style="list-style-type: decimal">
-<li><p>What signs should you look for to know that your codebook is
-ready and doesn’t need more editing?</p></li>
-<li><p>Beyond the best practices already discussed, what other best
-practices would make sense to employ in using quantitative manual
-content analysis?</p></li>
-</ol>
-</div>
-<div id="project-questions-show-your-work" class="section level4">
-<h4>Project Questions (show your work):</h4>
-<p>Apply this approach to your own research/interests!</p>
-<ol style="list-style-type: decimal">
-<li><p>Work with your partner or team to develop a single variable of
-interest and a brief codebook, using a corpus of your choice. What was
-the process like? What were the easy parts, and what were the
-challenges?</p></li>
-<li><p>Subset your corpus to 20 observations, and have each partner code
-those 20 items independently. What was the process like? How confident
-did you feel in your coding, and what did you observe from spending time
-with the text?</p></li>
-<li><p>Calculate your inter-coder reliability (follow Professor
-Freelon’s instructions about how to format the .csv file!). What factors
-help explain how high or low it is? Which particular observations did
-you code differently, and how might you update the coding process to
-improve the inter-coder reliability?</p></li>
-<li><p>Now repeat steps 1-3 again, but using a different variable of
-interest OR a different set of coding rules for your same variable of
-interest.</p></li>
-<li><p>Finally, discuss: what worked and what didn’t, and why? Explain
-the similarities and differences between your two coding approaches and
-what you learned.</p></li>
-</ol>
-</div>
+<div id="activity" class="section level3">
+<h3>Activity</h3>
+<p>Work with your partner or team to examine the dataset of immigration
+tweets. Begin by agreeing on a variable of interest you will examine in
+addition to valence (i.e., positive or negative).</p>
+<p>Have a brief discussion about the coding rules you’ll use for valence
+and your second variable of interest.</p>
+<p>Using the tweet_data_coded.csv file, work independently to code the
+21 observations for your two variables: valence and your other variable
+of interest.</p>
+<p>Calculate your inter-coder reliability (follow Professor Freelon’s
+instructions about how to format the .csv file!).</p>
+<p>Discuss: What factors help explain how high or low your inter-coder
+reliability is? What worked and what didn’t, and why?</p>
 </div>
 
 
