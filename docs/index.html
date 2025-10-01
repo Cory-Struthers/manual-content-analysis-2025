@@ -1790,6 +1790,10 @@ tweet_df = subset(tweet_data, select = c(text)) %&gt;%
   slice(100:120)
 head(tweet_df)
 
+# As opposed to a slice, take a random sample (note: there are options for replacement and weighting for weighted random sampling)
+tweet_random_sample = sample(tweet_data, size = 20) 
+head(tweet_random_sample)
+
 # Add two columns for your own coding: one for valence, the other for a variable you find interesting
 tweet_data_coded = cbind(tweet_df, valence=&quot;&quot;, other_variable=&quot;&quot;)
 head(tweet_data_coded)
